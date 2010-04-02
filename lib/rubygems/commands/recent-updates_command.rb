@@ -4,6 +4,10 @@ require 'shellwords'
 class Gem::Commands::RecentUpdatesCommand < Gem::Command
   def initialize
     super 'recent-updates', "Display the recent histories of recently updated gems"
+
+    add_option('--since TIME', Float, 'Number of days back to look') do |value, options|
+      options[:days] = value
+    end
   end
 
   def description # :nodoc:
@@ -11,7 +15,7 @@ class Gem::Commands::RecentUpdatesCommand < Gem::Command
   end
   
   def execute
-    days = 30
+    days = options[:days] || 7
     since = Time.now - days * 24 * 60 * 60
     names = Gem.source_index.map do |name, spec|
       mtime = Dir["#{spec.full_gem_path}/**/*.*"].map { |file|
@@ -33,7 +37,7 @@ class Gem::Commands::RecentUpdatesCommand < Gem::Command
     end.compact
 
     if changes.any?
-      puts "Changes since #{since}:\n"
+      puts "Changes since #{since}:\n\n"
       puts changes.join("\n")
     else
       puts "No changes since #{since}."
@@ -52,7 +56,7 @@ class Gem::Commands::RecentUpdatesCommand < Gem::Command
     return lines.map {|s| s.sub(/^> /, '')}.join
   end
 
-  # from http://nex-3.com/posts/73-git-style-automatic-paging-in-ruby#comments
+  # from http://nex-3.com/posts/73-git-style-automatic-paging-in-ruby
   def run_pager
     return if PLATFORM =~ /win32/
     return unless STDOUT.tty?

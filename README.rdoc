@@ -27,5 +27,7 @@ See LICENSE.txt
 
 == CREDITS
 
-Thanks to {Grabriel Horner}[http://tagaholic.me/2009/04/23/how-to-write-a-rubygem-command-plugin.html]
+Thanks to {Gabriel Horner}[http://tagaholic.me/2009/04/23/how-to-write-a-rubygem-command-plugin.html]
 for the gem command example and howto.
+
+The paging code is from {Nathan Weizenbaum}[http://nex-3.com/posts/73-git-style-automatic-paging-in-ruby].

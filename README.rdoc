@@ -7,7 +7,7 @@ to the previously installed version.
 
 Install the gem with:
 
-    gem install osteele-gem_recent-updates
+    gem install gem_recent-updates
 
 == Examples
 

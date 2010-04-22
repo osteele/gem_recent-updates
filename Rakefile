@@ -21,7 +21,7 @@ begin
     s.name = 'gem_recent-updates'
     s.description = "Adds a gem command that displays the new portions of the history files of recently updated gems."
     s.summary = "A gem command plugin that displays the tops of the history files of recently updated gems."
-    s.email = "gabriel.horner@gmail.com"
+    s.email = "steele@osteele.com"
     s.homepage = "http://github.com/osteele/gem_recent-updates"
     s.authors = ["Oliver Steele"]
     s.has_rdoc = true
